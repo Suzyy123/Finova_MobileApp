@@ -1,47 +1,78 @@
-import { Icon, Label, NativeTabs } from 'expo-router/unstable-native-tabs';
+import {
+  Icon,
+  Label,
+  NativeTabs,
+  VectorIcon,
+} from 'expo-router/unstable-native-tabs';
+
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 export default function TabLayout() {
   return (
     <NativeTabs>
+
       <NativeTabs.Trigger name="index">
         <Icon
-          sf="square.grid.2x2"
-          drawable="ic_dashboard"
+          src={
+            <VectorIcon
+              family={MaterialCommunityIcons}
+              name="view-dashboard"
+            />
+          }
         />
+
         <Label>Dashboard</Label>
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="analytic">
-        <Icon
-          sf="chart.line.uptrend.xyaxis"
-          drawable="ic_analytics"
+    <NativeTabs.Trigger name="analytic">
+    <Icon
+    src={
+        <VectorIcon
+        family={MaterialCommunityIcons}
+        name="chart-line"
         />
-        <Label>Analytics</Label>
-      </NativeTabs.Trigger>
+        }
+    />
+    <Label>Analytics</Label>
+    </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="insights">
-        <Icon
-          sf="brain"
-          drawable="ic_insights"
+    <NativeTabs.Trigger name="insights">
+      <Icon
+        src={
+          <VectorIcon
+            family={MaterialCommunityIcons}
+            name="brain"
+          />
+        }
+      />
+
+      <Label>AI Insights</Label>
+    </NativeTabs.Trigger>
+
+    <NativeTabs.Trigger name="history">
+    <Icon
+    src={
+        <VectorIcon
+        family={MaterialCommunityIcons}
+        name="history"
         />
-        <Label>AI Insights</Label>
-      </NativeTabs.Trigger>
+        }
+    />
+    <Label>History</Label>
+    </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="history">
-        <Icon
-          sf="clock"
-          drawable="ic_history"
+    <NativeTabs.Trigger name="profile">
+     <Icon
+        src={
+            <VectorIcon
+            family={MaterialCommunityIcons}
+            name="cog"
+            />
+            }
         />
         <Label>History</Label>
-      </NativeTabs.Trigger>
+    </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="profile">
-        <Icon
-          sf="person"
-          drawable="ic_profile"
-        />
-        <Label>Profile</Label>
-      </NativeTabs.Trigger>
     </NativeTabs>
   );
 }
