@@ -29,7 +29,28 @@ const financialOverviewData = [
   }
 
 ];
-
+const Stats = [
+  {
+    label: "Revenue",
+    value: "$7.7K",
+    percentage: 100,
+  },
+  {
+    label: "Profit",
+    value: "$1.9K",
+    percentage: 25,
+  },
+  {
+    label: "Expenses",
+    value: "$5.8K",
+    percentage: 75,
+  },
+  {
+    label: "Inventory",
+    value: "$2.6K",
+    percentage: 35,
+  },
+]
 export default function Index() {
   //For color changing  of the button
   const [selectedPeriod, setSelectedPeriod] = useState("Week");
@@ -38,7 +59,7 @@ export default function Index() {
     <SafeAreaView
       className=" flex-1 bg-gray-100">
       <ScrollView
-         style={{ flex: 1 }}
+        style={{ flex: 1 }}
         contentContainerStyle={{
           paddingBottom: 100,
         }}
@@ -134,36 +155,79 @@ export default function Index() {
                   }`}>Month</Text>
               </TouchableOpacity>
             </View>
-            
+
           </View>
           <View className="bg-white rounded-2xl mx-4 h-60 mt-4 shadow-lg ">
 
           </View>
+          {/* Finova AI */}
           <View className="px-4 mt-2">
             <Text className="font-semibold text-lg mb-2">Finova AI</Text>
             <View className="bg-purple-100 rounded-2xl h-40 shadow-md">
-            <View className="flex flex-row items-center px-2 py-2 gap-2">
-              <View className="bg-purple-500 rounded-full w-8 h-8 items-center justify-center">
+              <View className="flex flex-row items-center px-2 py-2 gap-2">
+                <View className="bg-purple-500 rounded-full w-8 h-8 items-center justify-center">
                   <Ionicons
-                  name="star-half-outline"
-                  size={20}
-                  color="white"
+                    name="star-half-outline"
+                    size={20}
+                    color="white"
                   />
+                </View>
+                <Text>AI Insights</Text>
               </View>
-              <Text>AI Insights</Text>
+              <Text className="text-gray-600 px-2 text-sm">Based on 11 trading days, revenue is trending <Text className="text-purple-600 font-semibold"> +6.5% </Text> per day - a
+                project $51,760.00 over the next 30 days at 63% confidence</Text>
+              <TouchableOpacity className="flex flex-row  px-2 py-2 gap-1 items-center">
+                <Ionicons
+                  name="arrow-back-outline"
+                  color="purple"
+                  size={14}
+                />
+                <Text className="text-purple-500 text-sm font-semibold">
+                  View Insights
+                </Text>
+              </TouchableOpacity>
+
+
             </View>
-            <Text className="text-gray-600 px-2 text-sm">Based on 11 trading days, revenue is trending <Text className="text-purple-600 font-semibold"> +6.5% </Text> per day - a
-               project $51,760.00 over the next 30 days at 63% confidence</Text>
-            <TouchableOpacity className="flex flex-row  px-2 py-2 gap-1 items-center"> 
-              <Ionicons
-              name="arrow-back-outline"
-              color="purple"
-              size={14}
+            {/* Financial breakdown */}
+            <Text className="font-semibold mt-2 text-lg mb-2">Financial breakdown</Text>
+            <View className="bg-white rounded-2xl">
+              <FlatList
+                data={Stats}
+                keyExtractor={(item) => item.label}
+                scrollEnabled={false}
+                renderItem={({ item, index }) => (
+                  <View
+                    className={index !== Stats.length - 1 ? "mb-1 px-2" : "mb-1 px-2"}
+                  >
+                    <View className=" flex-row items-center justify-between ">
+                      <Text className="text-sm font-semibold text-slate-500">
+                        {item.label}
+                      </Text>
+
+                      <Text className="text-sm font-semibold text-slate-800 mb-2 mt-1 ">
+                        {item.value}
+                      </Text>
+                    </View>
+
+                    {/* Progress background */}
+                    <View className="h-2 overflow-hidden rounded-full bg-slate-100">
+                      {/* Progress */}
+                      <View
+                        className="h-full rounded-full bg-violet-500"
+                        style={{
+                          width: `${item.percentage}%`,
+                        }}
+                      />
+                    </View>
+                    
+                  </View>
+                  
+                )}
+                
               />
-              <Text className="text-purple-600 text-sm font-semibold">
-                View Insights
-              </Text>
-            </TouchableOpacity>
+               <Text className="px-2 text-xs mt-2 mb-4">Top category: Food and beverages · $3.3K revenue</Text>
+           
             </View>
           </View>
         </View>
