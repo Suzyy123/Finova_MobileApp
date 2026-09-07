@@ -54,10 +54,32 @@ const Stats = [
  const recentTransaction = [
   {
     "id" : "1",
+    "title" : "Fresh produce restock",
+    "sales": "-$4,820",
+    "date": "Sep 2, 2026. Bank transfer",
+    "status": "Completed"
 
   },
   {
-    "id" : "2"
+    "id" : "2",
+    "title" : "Fresh produce restock",
+    "sales": "-$4,820",
+    "date": "Sep 2, 2026. Bank transfer",
+    "status": "Completed"
+  },
+  {
+     "id" : "3",
+    "title" : "Fresh produce restock",
+    "sales": "-$4,820",
+    "date": "Sep 2, 2026. Bank transfer",
+    "status": "Completed"
+  }, 
+  {
+   "id" : "4",
+    "title" : "Fresh produce restock",
+    "sales": "-$4,820",
+    "date": "Sep 2, 2026. Bank transfer",
+    "status": "Completed"
   }
    
  ]
@@ -239,9 +261,31 @@ export default function Index() {
            
             </View>
             {/* Recent Transaction */}
-            <Text className="font-semibold">Recent Transaction</Text>
+            <View className="flex-row  mt-2 mb-2 justify-between">
+            <Text className="font-semibold text-lg">Recent Transaction</Text>
+            <TouchableOpacity>
+             <Text className="text-purple-600 font-semibold mt-1">See all{" >"}</Text>  
+            </TouchableOpacity>
+           </View>
             <View>
-              
+              <FlatList
+              data={recentTransaction}
+              showsHorizontalScrollIndicator={false}
+              keyExtractor={(item) => item.id}
+              renderItem={({item})=> (
+                <View className="bg-white rounded-2xl px-4 py-4 mb-2">
+                  <View className="flex-row justify-between mb-2">
+                   <Text className="font-semibold">{item.title}</Text>
+                  <Text className="">{item.sales}</Text>
+                  </View>
+                  <View className="flex-row justify-between">
+                  <Text className="text-gray-600">{item.date}</Text>
+                  <Text className="bg-green-300 rounded-2xl w-24 items-center">{item.status}</Text>
+                  </View>
+                
+                </View>
+              ) }
+              />
             </View>
           </View>
         </View>
