@@ -17,6 +17,7 @@ export default function TabLayout() {
             <VectorIcon
               family={MaterialCommunityIcons}
               name="view-dashboard"
+              
             />
           }
         />

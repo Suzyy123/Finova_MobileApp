@@ -51,6 +51,16 @@ const Stats = [
     percentage: 35,
   },
 ]
+ const recentTransaction = [
+  {
+    "id" : "1",
+
+  },
+  {
+    "id" : "2"
+  }
+   
+ ]
 export default function Index() {
   //For color changing  of the button
   const [selectedPeriod, setSelectedPeriod] = useState("Week");
@@ -219,8 +229,7 @@ export default function Index() {
                           width: `${item.percentage}%`,
                         }}
                       />
-                    </View>
-                    
+                    </View>  
                   </View>
                   
                 )}
@@ -228,6 +237,11 @@ export default function Index() {
               />
                <Text className="px-2 text-xs mt-2 mb-4">Top category: Food and beverages · $3.3K revenue</Text>
            
+            </View>
+            {/* Recent Transaction */}
+            <Text className="font-semibold">Recent Transaction</Text>
+            <View>
+              
             </View>
           </View>
         </View>
