@@ -51,38 +51,38 @@ const Stats = [
     percentage: 35,
   },
 ]
- const recentTransaction = [
+const recentTransaction = [
   {
-    "id" : "1",
-    "title" : "Fresh produce restock",
+    "id": "1",
+    "title": "Fresh produce restock",
     "sales": "-$4,820",
     "date": "Sep 2, 2026. Bank transfer",
     "status": "Completed"
 
   },
   {
-    "id" : "2",
-    "title" : "Fresh produce restock",
+    "id": "2",
+    "title": "Counter sales — evening",
     "sales": "-$4,820",
-    "date": "Sep 2, 2026. Bank transfer",
+    "date": "Sep 2, 2026. Card",
+    "status": "Pending"
+  },
+  {
+    "id": "3",
+    "title": "Dairy & eggs",
+    "sales": "-$4,820",
+    "date": "Sep 2, 2026. Esewa",
     "status": "Completed"
   },
   {
-     "id" : "3",
-    "title" : "Fresh produce restock",
+    "id": "4",
+    "title": "Beverages crate order",
     "sales": "-$4,820",
-    "date": "Sep 2, 2026. Bank transfer",
-    "status": "Completed"
-  }, 
-  {
-   "id" : "4",
-    "title" : "Fresh produce restock",
-    "sales": "-$4,820",
-    "date": "Sep 2, 2026. Bank transfer",
-    "status": "Completed"
+    "date": "Sep 2, 2026. Card",
+    "status": "Pending"
   }
-   
- ]
+
+]
 export default function Index() {
   //For color changing  of the button
   const [selectedPeriod, setSelectedPeriod] = useState("Week");
@@ -251,40 +251,50 @@ export default function Index() {
                           width: `${item.percentage}%`,
                         }}
                       />
-                    </View>  
+                    </View>
                   </View>
-                  
+
                 )}
-                
+
               />
-               <Text className="px-2 text-xs mt-2 mb-4">Top category: Food and beverages · $3.3K revenue</Text>
-           
+              <Text className="px-2 text-xs mt-2 mb-4">Top category: Food and beverages · $3.3K revenue</Text>
+
             </View>
             {/* Recent Transaction */}
             <View className="flex-row  mt-2 mb-2 justify-between">
-            <Text className="font-semibold text-lg">Recent Transaction</Text>
-            <TouchableOpacity>
-             <Text className="text-purple-600 font-semibold mt-1">See all{" >"}</Text>  
-            </TouchableOpacity>
-           </View>
+              <Text className="font-semibold text-lg">Recent Transaction</Text>
+              <TouchableOpacity>
+                <Text className="text-purple-600 font-semibold mt-1">See all{" >"}</Text>
+              </TouchableOpacity>
+            </View>
             <View>
               <FlatList
-              data={recentTransaction}
-              showsHorizontalScrollIndicator={false}
-              keyExtractor={(item) => item.id}
-              renderItem={({item})=> (
-                <View className="bg-white rounded-2xl px-4 py-4 mb-2">
-                  <View className="flex-row justify-between mb-2">
-                   <Text className="font-semibold">{item.title}</Text>
-                  <Text className="">{item.sales}</Text>
+                data={recentTransaction}
+                nestedScrollEnabled={true}
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                  <View className="bg-white rounded-2xl px-4 py-4 mb-2">
+                    <View className="flex-row justify-between mb-2">
+                      <Text className="font-semibold">{item.title}</Text>
+                      <Text className="font-bold text-lg">{item.sales}</Text>
+                    </View>
+                    <View className="flex-row justify-between">
+                      <Text className="text-gray-600 mt-1">{item.date}</Text>
+                      <View
+                        className={`rounded-2xl w-24 h-8 items-center justify-center ${item.status === "Pending"
+                            ? "bg-yellow-500"
+                            : "bg-green-400"
+                          }`}
+                      >
+                        <Text className="text-white">
+                          {item.status}
+                        </Text>
+                      </View>
+                    </View>
+
                   </View>
-                  <View className="flex-row justify-between">
-                  <Text className="text-gray-600">{item.date}</Text>
-                  <Text className="bg-green-300 rounded-2xl w-24 items-center">{item.status}</Text>
-                  </View>
-                
-                </View>
-              ) }
+                )}
               />
             </View>
           </View>

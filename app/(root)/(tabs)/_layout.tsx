@@ -36,6 +36,18 @@ export default function TabLayout() {
     />
     <Label>Analytics</Label>
     </NativeTabs.Trigger>
+    
+     <NativeTabs.Trigger name="upload">
+    <Icon
+    src={
+        <VectorIcon
+        family={MaterialCommunityIcons}
+        name="plus"
+        />
+        }
+    />
+    <Label>Upload</Label>
+    </NativeTabs.Trigger>
 
     <NativeTabs.Trigger name="insights">
       <Icon
@@ -50,17 +62,7 @@ export default function TabLayout() {
       <Label>AI Insights</Label>
     </NativeTabs.Trigger>
 
-    <NativeTabs.Trigger name="history">
-    <Icon
-    src={
-        <VectorIcon
-        family={MaterialCommunityIcons}
-        name="history"
-        />
-        }
-    />
-    <Label>History</Label>
-    </NativeTabs.Trigger>
+   
 
     <NativeTabs.Trigger name="profile">
      <Icon
@@ -71,7 +73,7 @@ export default function TabLayout() {
             />
             }
         />
-        <Label>History</Label>
+        <Label>Profile</Label>
     </NativeTabs.Trigger>
 
     </NativeTabs>
